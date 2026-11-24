@@ -180,7 +180,7 @@ function showL(k){li=k;const s=L[k];
  $('#lidx').innerHTML=L.map((x,j)=>`<div class="${j===k?'cur':''}" data-k="${j}">${esc(x.title)}${x.tracks.length?'<small>♪ ouvir</small>':''}</div>`).join('');
  document.querySelectorAll('#lidx div').forEach(el=>el.onclick=()=>showL(+el.dataset.k));
  const cur=document.querySelector('#lidx .cur'); cur&&cur.scrollIntoView({block:'nearest',inline:'nearest'});
- $('#ltxt').innerHTML=`<h3>${esc(s.title)}</h3><div class="by">Letra: ${esc(s.author)}</div>`+s.tracks.map(tr=>`<button class="go" data-t="${tr.i}"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>${tr.bonus?'Ouvir bonus track (Suno)':'Ouvir gravação original'}</button> `).join('')+
+ $('#ltxt').innerHTML=`<h3>${esc(s.title)}</h3><div class="by">Letra: ${esc(s.author)}</div>`+s.tracks.map(tr=>`<button class="go" data-t="${tr.i}"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>${tr.bonus?'Ouvir bonus track (Suno)':'Ouvir instrumental original'}</button> `).join('')+
   `<div class="lt">${s.lyrics?esc(s.lyrics).replace(/\(2x\)/g,'<span class="rep">(2x)</span>'):'<span style="color:var(--mute)">Letra ainda não disponível.</span>'}</div>`;
  document.querySelectorAll('#ltxt .go').forEach(g=>g.onclick=()=>{lp.classList.remove('open');load(+g.dataset.t);a.play();window.scrollTo({top:0,behavior:'smooth'})});
  $('#ltxt').scrollTop=0}
