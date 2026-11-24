@@ -56,6 +56,7 @@ svg{width:22px;height:22px;fill:currentColor}
 #lyrics{padding:4px 12px;white-space:pre-line;line-height:1.75;font-size:16px;color:#e8e4dd;max-height:520px;overflow:auto}
 #lyrics .rep{color:var(--acc);font-weight:600}
 footer{text-align:center;color:var(--mute);font-size:12px;padding:24px 16px 36px}
+footer>div{margin:6px 0}footer .copy{line-height:1.6;margin-top:12px;opacity:.85}#visitas{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px 0}#visitas:not([hidden]){display:flex}#visitas[hidden]{display:none}#visitas img{height:20px}
 #zoom{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;place-items:center;z-index:9;cursor:zoom-out}
 #zoom img{max-width:94vw;max-height:94vh;border-radius:8px}
 #fotos{max-width:1180px;margin:8px auto 0;padding:0 16px}
@@ -118,7 +119,11 @@ nav a:hover{border-color:var(--acc);color:var(--acc)}
  </div>
 </main>
 <section id="fotos"><div class="card"><h2>Fotos da banda</h2><div id="grid"></div></div></section>
-<footer>Banda Clímax — gravações originais remasterizadas</footer>
+<footer>
+<div>Banda Clímax — gravações originais remasterizadas</div>
+<div id="visitas" hidden><img alt="contador de visitas" referrerpolicy="no-referrer-when-downgrade"></div>
+<div class="copy">© <span id="ano">2026</span> Banda Clímax. Todos os direitos reservados à Banda Clímax e a seus autores:<br>William Andrade, Eduardo Domingos, Waldi e Denis Oliveira.<br>Letras, músicas e gravações protegidas por direitos autorais. Proibida a reprodução sem autorização.</div>
+</footer>
 <div id="zoom"><img alt=""></div>
 <div id="letras"><div class="top"><h2>Letras <span>· Banda Clímax</span></h2><button id="lclose" title="Fechar"><svg viewBox="0 0 24 24"><path d="M19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"/></svg></button></div><div class="body"><div id="lidx"></div><div id="ltxt"></div></div></div>
 <div id="lb"><button class="lx" title="Fechar"><svg viewBox="0 0 24 24"><path d="M19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"/></svg></button><button class="lp" title="Anterior"><svg viewBox="0 0 24 24"><path d="M15.4 7.4 14 6l-6 6 6 6 1.4-1.4L10.8 12z"/></svg></button><img alt=""><button class="ln" title="Próxima"><svg viewBox="0 0 24 24"><path d="M10 6 8.6 7.4 13.2 12l-4.6 4.6L10 18l6-6z"/></svg></button><div class="cnt"></div></div>
@@ -188,6 +193,11 @@ function openL(){lp.classList.add("open");const k=L.findIndex(x=>x.tracks.some(t
 $('#lclose').onclick=()=>lp.classList.remove('open');
 document.querySelectorAll('nav a').forEach(el=>el.onclick=()=>{const g=el.dataset.go; if(g==='letras')openL(); else document.getElementById(g).scrollIntoView({behavior:'smooth'})});
 document.addEventListener('keydown',e=>{ if(!lp.classList.contains('open'))return; e.stopImmediatePropagation(); if(e.key==='Escape')lp.classList.remove('open'); if(e.key==='ArrowDown'||e.key==='ArrowRight')showL(Math.min(li+1,L.length-1)); if(e.key==='ArrowUp'||e.key==='ArrowLeft')showL(Math.max(li-1,0)) },true);
+(function(){const y=new Date().getFullYear(),e=document.getElementById('ano');if(e)e.textContent=y>2026?'2026–'+y:'2026';
+ const h=location.hostname; if(!h||h==='localhost'||h==='127.0.0.1') return;
+ const v=document.getElementById('visitas'), im=v.querySelector('img');
+ im.onload=()=>v.hidden=false; im.onerror=()=>v.hidden=true;
+ im.src='https://hits.sh/'+h+'.svg?label=visitas&color=f2b632&labelColor=0b0b10&style=flat-square';})();
 </script>
 </body>
 </html>
