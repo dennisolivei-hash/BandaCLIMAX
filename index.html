@@ -320,7 +320,7 @@ seek.oninput=()=>{drag=true;seek.style.setProperty('--p',seek.value/10+'%');$('#
 seek.onchange=()=>{a.currentTime=seek.value/1000*a.duration;drag=false};
 const vol=$('#vol'); const sv=()=>{a.volume=vol.value/100;vol.style.setProperty('--p',vol.value+'%')}; vol.oninput=sv; sv();
 $('#cover').onclick=()=>{$('#zoom img').src=T[i].covers[ci];$('#zoom').style.display='grid'}; $('#zoom').onclick=()=>$('#zoom').style.display='none';
-document.addEventListener('keydown',e=>{ if(e.target.tagName==='INPUT')return; if(e.code==='Space'){e.preventDefault();$('#play').click()} if(e.code==='ArrowRight')a.currentTime+=5; if(e.code==='ArrowLeft')a.currentTime-=5 });
+document.addEventListener('keydown',e=>{ if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||e.target.isContentEditable)return; if(e.code==='Space'){e.preventDefault();$('#play').click()} if(e.code==='ArrowRight')a.currentTime+=5; if(e.code==='ArrowLeft')a.currentTime-=5 });
 if('mediaSession' in navigator){const m=navigator.mediaSession;m.setActionHandler('play',()=>a.play());m.setActionHandler('pause',()=>a.pause());m.setActionHandler('nexttrack',()=>next(false));m.setActionHandler('previoustrack',()=>{load(i-1);a.play()});
  const tryH=(n,f)=>{try{m.setActionHandler(n,f)}catch(e){}};
  tryH('seekbackward',d=>{a.currentTime=Math.max(0,a.currentTime-(d.seekOffset||10))});
