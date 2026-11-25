@@ -4,6 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Banda Clímax — Sem Limites</title>
+<meta name="description" content="Banda Clímax — álbum Sem Limites remasterizado. Ouça as músicas, leia as letras e veja as fotos da banda.">
+<meta name="theme-color" content="#0b0b10">
+<link rel="canonical" href="https://bandaclimax.vercel.app/">
+<meta property="og:type" content="music.album">
+<meta property="og:site_name" content="Banda Clímax">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://bandaclimax.vercel.app/">
+<meta property="og:title" content="Banda Clímax — Sem Limites">
+<meta property="og:description" content="Álbum remasterizado. Ouça as músicas, leia as letras e veja as fotos da banda.">
+<meta property="og:image" content="https://bandaclimax.vercel.app/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pôster da Banda Clímax — Sem Limites">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Banda Clímax — Sem Limites">
+<meta name="twitter:description" content="Álbum remasterizado. Ouça as músicas, leia as letras e veja as fotos da banda.">
+<meta name="twitter:image" content="https://bandaclimax.vercel.app/og.jpg">
 <style>
 :root{--bg:#0b0b10;--fg:#f3f1ec;--mute:#a7a3a0;--acc:#f2b632;--line:rgba(255,255,255,.12);--card:rgba(15,15,22,.62)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -80,6 +97,62 @@ footer>div{margin:6px 0}footer .copy{line-height:1.6;margin-top:12px;opacity:.85
 #pdots{display:flex;justify-content:center;gap:8px;margin-top:12px}
 #pdots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer}#pdots i.on{background:var(--acc)}
 #left{display:flex;flex-direction:column;gap:24px;min-width:0}
+/* letra sincronizada */
+#lyrics .ln{transition:color .3s,opacity .3s}
+#lyrics .gap{height:1.1em}
+#lyrics.sync .ln{opacity:.45;cursor:pointer}
+#lyrics.sync .ln.on{opacity:1;color:var(--acc);font-weight:600}
+#lyrics.sync .ln.past{opacity:.7}
+#lyr .synctag{font-size:10px;letter-spacing:.1em;color:#111;background:var(--acc);border-radius:8px;padding:2px 7px;margin-left:8px;vertical-align:middle}
+#marca{margin:12px 12px 0;padding:12px;border:1px dashed var(--acc);border-radius:10px;font-size:13px;color:var(--mute);display:none}
+#marca.on{display:block}
+#marca b{color:var(--fg)}
+#marca .bt{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+#marca button,.sbtn{width:auto;height:auto;border-radius:20px;padding:8px 14px;font-size:13px;background:rgba(255,255,255,.08);color:var(--fg);border:1px solid var(--line);cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+#marca button.pri{background:var(--acc);color:#111;font-weight:700;border-color:var(--acc)}
+.sbtn svg{width:16px;height:16px;fill:currentColor}
+.sbtn:hover{border-color:var(--acc);color:var(--acc)}
+#shrow{display:flex;justify-content:center;margin-top:16px}
+/* compartilhar */
+#share{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:11;padding:16px}
+#share.open{display:flex}
+#share .box{background:#15151d;border:1px solid var(--line);border-radius:16px;padding:20px;width:min(100%,380px)}
+#share h3{font-size:15px;margin-bottom:4px}
+#share p{color:var(--mute);font-size:13px;margin-bottom:16px}
+#share .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#share .opts a,#share .opts button{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:10px;background:rgba(255,255,255,.06);color:var(--fg);text-decoration:none;font-size:14px;border:1px solid transparent;cursor:pointer;width:auto;height:auto;justify-content:flex-start}
+#share .opts a:hover,#share .opts button:hover{border-color:var(--acc)}
+#share .opts svg{width:20px;height:20px;fill:currentColor;flex:none}
+#share .x{margin-top:14px;width:100%;height:auto;padding:10px;border-radius:10px;background:transparent;color:var(--mute);border:1px solid var(--line);cursor:pointer}
+#share .ok{color:var(--acc);font-size:13px;text-align:center;margin-top:10px;min-height:1em}
+/* mural */
+#mural{max-width:1180px;margin:24px auto 0;padding:0 16px}
+#mural .card{padding:8px 20px 24px}
+#mural h2{font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--mute);padding:12px 0}
+#mural .intro{color:var(--mute);font-size:14px;margin-bottom:16px}
+#mural .cols{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:24px}
+#mform{display:flex;flex-direction:column;gap:10px}
+#mform input,#mform textarea{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:10px;color:var(--fg);padding:11px 12px;font:inherit;font-size:15px;width:100%}
+#mform textarea{min-height:120px;resize:vertical}
+#mform input:focus,#mform textarea:focus{outline:none;border-color:var(--acc)}
+#mform .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+#mform .row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+#mform small{color:var(--mute);font-size:12px}
+#mform button{width:auto;height:auto;padding:11px 20px;border-radius:22px;background:var(--acc);color:#111;font-weight:700;font-size:14px;border:0;cursor:pointer}
+#mform button:disabled{opacity:.5;cursor:default}
+#mstatus{font-size:13px;min-height:1.2em;color:var(--acc)}
+#mlist{display:flex;flex-direction:column;gap:12px;max-height:560px;overflow:auto;padding-right:4px}
+#mlist .rc{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+#mlist .rc .hd{display:flex;justify-content:space-between;gap:8px;align-items:baseline;margin-bottom:6px}
+#mlist .rc b{font-size:15px}
+#mlist .rc .meta{color:var(--mute);font-size:12px}
+#mlist .rc p{white-space:pre-line;line-height:1.6;color:#e8e4dd;font-size:15px;overflow-wrap:anywhere}
+#mlist .rc .del{margin-top:8px;width:auto;height:auto;padding:4px 10px;border-radius:8px;font-size:12px;background:#5a1d1d;color:#fff;border:0;cursor:pointer}
+#mlist .vazio{color:var(--mute);font-size:14px;padding:16px 0}
+#madmin{display:none;gap:8px;margin-bottom:12px}
+#madmin.on{display:flex}
+#madmin input{flex:1;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:10px;color:var(--fg);padding:8px 10px}
+@media (max-width:820px){#mural .cols{grid-template-columns:1fr}#mlist{max-height:none}}
 #lb{position:fixed;inset:0;background:rgba(0,0,0,.97);display:none;align-items:center;justify-content:center;z-index:10}
 #lb img{max-width:90vw;max-height:88vh;border-radius:6px;box-shadow:0 10px 40px #000}
 #lb button{position:absolute;color:#fff;width:52px;height:52px;background:rgba(255,255,255,.08)}
@@ -112,7 +185,7 @@ nav a:hover{border-color:var(--acc);color:var(--acc)}
 </head>
 <body>
 <div id="bg"></div>
-<header><h1>Banda Clímax</h1><p>Álbum · Sem Limites</p><nav><a data-go="player">Player</a><a data-go="letras">Letras</a><a data-go="fotos">Fotos</a><a data-go="posteres">Pôsteres</a></nav></header>
+<header><h1>Banda Clímax</h1><p>Álbum · Sem Limites</p><nav><a data-go="player">Player</a><a data-go="letras">Letras</a><a data-go="fotos">Fotos</a><a data-go="posteres">Pôsteres</a><a data-go="mural">Recados</a><a data-go="share">Compartilhar</a></nav></header>
 <main>
  <div id="left">
  <section id="player" class="card">
@@ -128,15 +201,29 @@ nav a:hover{border-color:var(--acc);color:var(--acc)}
    <button id="rep" title="Repetir"><svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg></button>
   </div>
   <div class="vol"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4z"/></svg><input id="vol" type="range" min="0" max="100" value="90"></div>
+  <div id="shrow"><button class="sbtn" id="shtrack"><svg viewBox="0 0 24 24"><path d="M18 16a3 3 0 0 0-2.4 1.2l-6.7-3.4a3 3 0 0 0 0-1.6l6.7-3.4A3 3 0 1 0 15 7c0 .3 0 .5.1.8L8.4 11.2a3 3 0 1 0 0 1.6l6.7 3.4A3 3 0 1 0 18 16z"/></svg>Compartilhar esta música</button></div>
  </section>
 <section id="posteres" class="card"><h2>Pôsteres</h2><div id="pslide" title="Ampliar"><img class="vis" src="posteres/poster_xerox.jpg" alt="Pôster Banda Clímax — Sem Limites (versão xerox)"><img src="posteres/poster_diy.jpg" alt="Pôster Banda Clímax — Sem Limites (versão DIY)" loading="lazy"></div><div id="pdots"></div></section>
 <section id="fotos" class="card"><h2>Fotos da banda</h2><div id="fslide" title="Ver todas as fotos"><div class="bgb"></div><img alt=""><img alt=""><span class="fh">Clique para ver todas</span><span class="fc"></span></div></section>
  </div>
  <div id="right">
   <section id="list" class="card"><h2>Faixas</h2><div id="tracks"></div></section>
-  <section id="lyr" class="card"><h2>Letra</h2><div id="lyrics"></div></section>
+  <section id="lyr" class="card"><h2>Letra<span class="synctag" id="synctag" hidden>ACOMPANHA A MÚSICA</span></h2><div id="lyrics"></div><div id="marca"></div></section>
  </div>
 </main>
+<section id="mural"><div class="card"><h2>Mural de recados</h2>
+<p class="intro">Conheceu a banda, foi a algum show ou só curtiu o som? Deixe seu recado para a Banda Clímax.</p>
+<div class="cols">
+<form id="mform" autocomplete="on">
+<input name="nome" maxlength="40" placeholder="Seu nome *" required>
+<input name="cidade" maxlength="40" placeholder="Cidade (opcional)">
+<textarea name="msg" maxlength="600" placeholder="Sua mensagem *" required></textarea>
+<input class="hp" name="site" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="row"><small><span id="mcount">0</span>/600</small><button type="submit">Enviar recado</button></div>
+<div id="mstatus" role="status"></div>
+</form>
+<div><div id="madmin"><input type="password" id="msenha" placeholder="Senha de moderação"><button class="sbtn" id="mlogin" type="button">Entrar</button></div><div id="mlist"><div class="vazio">Carregando recados…</div></div></div>
+</div></div></section>
 <footer>
 <div>Banda Clímax — gravações originais remasterizadas</div>
 <div id="visitas" hidden><img alt="contador de visitas" referrerpolicy="no-referrer-when-downgrade"></div>
@@ -145,6 +232,14 @@ nav a:hover{border-color:var(--acc);color:var(--acc)}
 <div id="zoom"><img alt=""></div>
 <div id="letras"><div class="top"><h2>Letras <span>· Banda Clímax</span></h2><button id="lclose" title="Fechar"><svg viewBox="0 0 24 24"><path d="M19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"/></svg></button></div><div class="body"><div id="lidx"></div><div id="ltxt"></div></div></div>
 <div id="lb"><button class="lx" title="Fechar"><svg viewBox="0 0 24 24"><path d="M19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"/></svg></button><button class="lp" title="Anterior"><svg viewBox="0 0 24 24"><path d="M15.4 7.4 14 6l-6 6 6 6 1.4-1.4L10.8 12z"/></svg></button><img alt=""><button class="ln" title="Próxima"><svg viewBox="0 0 24 24"><path d="M10 6 8.6 7.4 13.2 12l-4.6 4.6L10 18l6-6z"/></svg></button><div class="cnt"></div><div class="th"></div></div>
+<div id="share"><div class="box"><h3 id="shtitle">Compartilhar</h3><p id="shsub"></p><div class="opts">
+<a id="sh-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>WhatsApp</a>
+<a id="sh-fb" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg>Facebook</a>
+<a id="sh-x" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.8 3h3.1l-6.8 7.7 8 10.3h-6.3l-4.9-6.4L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.5l11.2 14.5z"/></svg>X (Twitter)</a>
+<a id="sh-tg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.7 19c-.2 1-.9 1.3-1.8.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2l-11 6.9-4.7-1.5c-1-.3-1-1 .2-1.5l18.5-7.1c.9-.3 1.6.2 1.4 1.6z"/></svg>Telegram</a>
+<button id="sh-cp" type="button"><svg viewBox="0 0 24 24"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/></svg>Copiar link</button>
+<button id="sh-nat" type="button" hidden><svg viewBox="0 0 24 24"><path d="M18 16a3 3 0 0 0-2.4 1.2l-6.7-3.4a3 3 0 0 0 0-1.6l6.7-3.4A3 3 0 1 0 15 7c0 .3 0 .5.1.8L8.4 11.2a3 3 0 1 0 0 1.6l6.7 3.4A3 3 0 1 0 18 16z"/></svg>Outros apps</button>
+</div><div class="ok" id="shok"></div><button class="x" id="shclose" type="button">Fechar</button></div></div>
 <audio id="a" preload="metadata"></audio>
 <script>
 const T = [{"title": "Sem Limites", "author": "William Andrade", "credit": "Letra: William Andrade", "bonus": false, "lyrics": "Vou no espaço, brilhe no céu\nAnde na chuva e seja fiel\nCorra perigos e se deixe sonhar\nUma estrela sei que pode alcançar\n\nSomos todos iguais e não temos limites\nSomos todos iguais e não temos limites\n\nNadar com os peixes não é ilusão\nBasta ter fé no seu coração\nQuando tudo está certo é só se lembrar\nQue tudo que faço é viver e sonhar\n\nSomos todos iguais e não temos limites\nSomos todos iguais e não temos limites\n\nEscale montanhas até se cansar\nVá para o oceano e mergulhe no mar\nNão me fale de erros nem me conte mentiras\nSerá que te vejo daqui a alguns dias\n\nSomos todos iguais e não temos limites\nSomos todos iguais e não temos limites", "dur": 191.4, "audio": "audio/semlimites.mp3", "covers": ["capas/semlimites.jpg", "capas/semlimites2.jpg"]}, {"title": "Paredes de Fogo", "author": "William Andrade", "credit": "Letra: William Andrade", "bonus": false, "lyrics": "Paredes de fogo estão a queimar\nTorpedos explodem no ar\nTanques de guerra, comando, invasão\nO sangue se espalha no chão\n\nHomens armados, sinto o perigo\nDesastre ao lado, não somos bandidos\nQuero respeito, procuro um abrigo\nMortes a balas e tiros perdidos\n\nTudo que eu quero é viver\nTudo que eu quero é viver\nMostre e se deixe envolver\nTudo o que eu quero é viver (2x)\n\nLaços traçados, corpos caídos\nCrimes, assaltos, tempos perdidos\nBrigas de asfalto e gente dormindo\nDrogas e facas e mortos sorrindo\n\nParedes de fogo estão a queimar\nAs flores não podem brotar\nPassos marcados de pura tensão\nVidas passadas em vão...", "dur": 198.9, "audio": "audio/paredes.mp3", "covers": ["capas/paredes.jpg", "capas/paredes2.jpg"]}, {"title": "Paisagens ao Vento", "author": "Waldi / William Andrade / Denis Oliveira / Eduardo Domingos", "credit": "Letra: Waldi / William Andrade / Denis Oliveira / Eduardo Domingos", "bonus": false, "lyrics": "Paisagens ao vento vou te encontrar\nUm dia perfeito para relembrar\nMomentos passados e talvez esquecidos\nLembranças e glórias de um mundo perdido\n\nEstradas desertas de escuridão\nNão vejo ninguém, só solidão\nEstou sozinho e ninguém comigo\nProcuro um amigo\n\nOlhando o horizonte volto a perguntar\nMil passos estranhos, onde é que está\nDe tantas estrelas só enxergo o seu brilho\nÉ a luz do destino\nÉ você que eu quero perto de mim...", "dur": 184.9, "audio": "audio/paisagens.mp3", "covers": ["capas/paisagens.jpg", "capas/paisagens2.jpg"]}, {"title": "Contos de um Herói", "author": "William Andrade / Eduardo Domingos", "credit": "Letra: William Andrade / Eduardo Domingos", "bonus": false, "lyrics": "Vivo num tempo qualquer\nE o medo pra mim é real\nSinto coragem em ver\nO perigo que passa é fatal\n\nAs ruas não têm gratidão\nHá mortes causadas por pão\nPessoas que lutam sem ver\nProblemas que estão ao redor\n\nQue problemas são esses?\nNão sabemos dizer\nQue problemas são esses?\nNós queremos saber (2x)\n\nTento enxergar o porquê\nQue todos querem poder\nSer livre pra resolver\nOs problemas que a vida constrói\n\nIsso é um relato concreto\nContos de um Herói\nSomos todos modernos\nContos de um Herói.", "dur": 186.1, "audio": "audio/contos.mp3", "covers": ["capas/contos.jpg", "capas/contos2.jpg"]}, {"title": "Foi Sem Querer", "author": "Denis Oliveira", "credit": "Letra: Denis Oliveira", "bonus": false, "lyrics": "Foi sem querer que eu te encontrei\nFoi sem querer que me apaixonei\nFoi sem querer isso virou paixão\nNão posso entender\nNão é ilusão\nFoi sem querer\n\nSe você me desse uma chance\nPra eu te mostrar\nO que é um romance\nVocê ia ver\nQue isso é muito bom\nE ia entender o meu coração\nFoi sem querer.", "dur": 178.3, "audio": "audio/foisemquerer.mp3", "covers": ["capas/foisemquerer.jpg", "capas/foisemquerer2.jpg"]}, {"title": "Não Tenha Medo", "author": "William Andrade", "credit": "Letra: William Andrade", "bonus": false, "lyrics": "Não, não tenha medo, não\nVocê não está só\nEu sempre amei você\nEu sempre amei você\nNão tente me esquecer\nNão tente me esquecer\n\nSempre tive a ilusão\nQue a dor de uma paixão\nÉ fácil de curar\nMas tenho que lembrar\nQue tenho coração\nQue é frágil e sem razão\nNão posso aguentar\nFicar sem você\n\nFaça a rosa desabrochar\nFaça o pássaro voar\nFaça as luzes se acender\n\nNão, não tenha medo, não\nVocê não está só\nEu sempre amei você\nEu sempre amei você\n\nFaça a rosa desabrochar\nFaça o pássaro voar\nFaça as luzes se acender\n\nFaça a rosa desabrochar\nFaça o pássaro voar\nFaça as luzes se acender", "dur": 194.4, "audio": "audio/naotenhamedo.mp3", "covers": ["capas/naotenhamedo.jpg", "capas/naotenhamedo2.jpg"]}, {"title": "Carro do Ano", "author": "Denis Oliveira", "credit": "Letra: Denis Oliveira", "bonus": false, "lyrics": "Primeiro poste que eu ver, eu vou bater\nPorque eu quero, eu quero\nÉ um carro do ano\nEu quero, eu quero\nÉ um carro do ano\nEu quero, eu quero\nÉ um carro do ano\n\nO ano passado você prometeu\nUm carro novo igualzinho ao seu\n\nEu quero, eu quero\nÉ um carro do ano\nEu quero, eu quero\nÉ um carro do ano\nEu quero, eu quero\nÉ um carro do ano\n\nNão adianta você chorar\nPorque esse carro eu não vou te dar\n\nEu quero, eu quero\nUm carro do ano\nÉ um carro do ano\nUm carro do ano\nÉ um carro do ano\nUm carro do ano\n\nUm carro novo você tem que me dar\nPra minhas minas passear\n\nEu quero, eu quero\nÉ um carro do ano\nEu quero, eu quero\nÉ um carro do ano\nEu quero, eu quero\nÉ um carro do ano", "dur": 102.9, "audio": "audio/carro.mp3", "covers": ["capas/carro.jpg", "capas/carro2.jpg"]}, {"title": "Sentimento Perdido", "author": "Denis Oliveira", "credit": "Letra: Denis Oliveira", "bonus": true, "lyrics": "Estou aqui, longe de ti\nLonge de tudo, fora de mim\nVou lutar, não vou desistir\nVou atrás de você, volta pra mim\n\nO passado está enterrado\nE o presente está ao meu lado\nO futuro vou cativar\nPara você voltar\nA confiar em mim\n\nMe perdoe, tudo o que fiz\nMagoei você\nPois eu não queria\nBrinquei com seus sentimentos\nCom seu coração\nCom você por dentro\nEstou arrependido...", "dur": 191.6, "audio": "audio/b_sentimento.mp3", "covers": ["capas/b_sentimento.jpg", "capas/b_sentimento2.jpg"]}, {"title": "Muro de Rosas", "author": "William Andrade", "credit": "Letra: William Andrade", "bonus": true, "lyrics": "Atrás do muro de rosas\nEsconde as mais belas flores do jardim\nNo qual estão os meus segredos\nQuero saber se você vai me ajudar\nA resolver os problemas pendentes?\nNão posso simplesmente esquecer do passado\nE virar as costas para o mundo\n\nMuro de rosas vai desabar\nSe eu não puder me lembrar (2x)\n\nCastelos abandonados guardam\nOs seus mistérios\nPalavras não decifradas\nInvadem o meu império\nQuero saber se você vai me ajudar\nA fazer o que eu não fiz?\nQuero saber se você vai me ajudar\nA apagar a cicatriz...", "dur": 189.3, "audio": "audio/b_muro.mp3", "covers": ["capas/b_muro.jpg", "capas/b_muro2.jpg"]}, {"title": "Anjos no Aquário", "author": "Eduardo Domingos", "credit": "Letra: Eduardo Domingos", "bonus": true, "lyrics": "Fui conversar com anjos no aquário\nE não tive resposta\nSerá que anjos não falam\nOu eu não consigo ouvir?\n\nPorque o mergulho que eles deram\nLogo voltou à superfície\nNão consigo enxergar e nem ouvir\nO que é que eles dizem?\n\nPorque anjos no aquário não passam\nDe peixes quando estou alucinado (2x)\n\nEu vou soltar os anjos do aquário\nE quebrar o vidro transparente\nE a água que sair do aquário\nVou lavar as minhas mãos\nE tentar fugir", "dur": 238.4, "audio": "audio/b_anjos.mp3", "covers": ["capas/b_anjos.jpg", "capas/b_anjos2.jpg"]}, {"title": "O Nada", "author": "William Andrade / Eduardo Domingos", "credit": "Letra: William Andrade / Eduardo Domingos", "bonus": true, "lyrics": "O nada estava escrito, nada me disseram\nNada que fizeram adiantou pra mim\nEu vi o nada escrito num livro\nNão me lembro de que matéria era\nDe Inglês, Português ou Gramática\nMas não era de Matemática\n\nMas o nada das minhas canções\nEstão nos corações... e os corações\nQue recebem o nada\nNão querem nada com nada (2x)\n\nPara escrever esta canção não tive\nNada de inspiração\nMas o nada que todos conhecem\nJuro que nunca vi\n\nO nada é uma imperfeição\nDe nada quero saber então\nSei que tudo é um pesadelo\nOnde o nada está dentro\nO vento sempre me trouxe o nada\nE o pouco que me restou\nNão sei se posso entender\nO que o nada quis me dizer...", "dur": 253.7, "audio": "audio/b_onada.mp3", "covers": ["capas/b_onada.jpg", "capas/b_onada2.jpg"]}, {"title": "Foi Sem Querer", "author": "Denis Oliveira", "credit": "Letra: Denis Oliveira", "bonus": true, "lyrics": "Foi sem querer que eu te encontrei\nFoi sem querer que me apaixonei\nFoi sem querer isso virou paixão\nNão posso entender\nNão é ilusão\nFoi sem querer\n\nSe você me desse uma chance\nPra eu te mostrar\nO que é um romance\nVocê ia ver\nQue isso é muito bom\nE ia entender o meu coração\nFoi sem querer.", "dur": 155.8, "audio": "audio/b_foisemquerer.mp3", "covers": ["capas/b_foisemquerer.jpg", "capas/b_foisemquerer2.jpg"]}, {"title": "Depois de Tudo", "author": "William Andrade", "credit": "Letra: William Andrade", "bonus": true, "lyrics": "O mistério de se estar aqui\nÉ simplesmente o fato de viver\nNão, não tente me iludir\nAgora estou livre para perceber\n\nQuando se foi, não olhou para trás\nE não viu o que deixou\nNem mesmo um sinal de compaixão\nE mesmo assim, não foi real\nEnxergar toda razão que existe\nSem promessas e sem perdão\n\nO que houve não importa mais\nO futuro falará por nós (2x)\n\nFalará por nós e tudo findará\nE a distância que se marcou com o tempo\nNunca mais retornará\nCom tanta dor, que me fez chorar\nE lembrar o que passou\nÉ tudo\nE não quero mais recordar...", "dur": 192.7, "audio": "audio/b_depois.mp3", "covers": ["capas/b_depois.jpg", "capas/b_depois2.jpg"]}, {"title": "7 de Dezembro", "author": "William Andrade", "credit": "Letra: William Andrade", "bonus": true, "lyrics": "Foi difícil entender\nQuando você me disse: — não\nE as vezes que eu sempre ouvia\nNa batida de um amor\nEu escutei meu coração\nE a voz que sempre me dizia\nCoisas que eu queria ouvir\nE me enchiam de ilusão\nEram mesmo as frases\nMais bonitas\n\nSei que agora foi em vão\nMe entregar a esta paixão\nQue por tantas vezes\nMe envolvia\nSempre me envolvia\nTudo é fantasia...", "dur": 201.5, "audio": "audio/b_7dez.mp3", "covers": ["capas/b_7dez.jpg", "capas/b_7dez2.jpg"]}, {"title": "Sem Você", "author": "Denis Oliveira", "credit": "Letra: Denis Oliveira", "bonus": true, "lyrics": "Sem você\nSem o seu amor\nSem o seu carinho\nEu vou ficar sozinho\n\nNão vou viver\nNão vou viver\nSem o seu amor\n\nSem você\nA vida é escuridão\nSem você\nPartiu meu coração\n\nNão vou viver\nNão vou viver\nSem o seu amor\n\nSem você\nNão há mais sentido\nSem você\nPara iluminar meu caminho\n\nNão vou viver\nNão vou viver\nSem o seu amor", "dur": 189.6, "audio": "audio/b_semvoce.mp3", "covers": ["capas/b_semvoce.jpg", "capas/b_semvoce2.jpg"]}, {"title": "Segredo", "author": "William Andrade / Eduardo Domingos", "credit": "Letra: William Andrade / Eduardo Domingos", "bonus": true, "lyrics": "Pessoas escondem seus sentimentos\nTalvez por medo de enfrentar\nE encontrar o que há por dentro\nOu uma força pra nos guiar\n\nVamos ter que lutar\nE aprender a conduzir (2x)\n\nEncontro um perigo\nQue não deve ser real\nOu um segredo que está perdido\nNas lindas faces de um imortal\n\nEntre segredos que\nUma face esconde\nEu não consigo desvendar\nFaces alegres e\nFaces que choram\nUm sentimento a si buscar...", "dur": 216.1, "audio": "audio/b_segredo.mp3", "covers": ["capas/b_segredo.jpg", "capas/b_segredo2.jpg"]}, {"title": "Cantar o Amor", "author": "William Andrade", "credit": "Letra: William Andrade", "bonus": true, "lyrics": "Tem um jeito de me conquistar\nSua voz desperta a paixão\nNão faz sentido me magoar\nLhe entreguei meu coração\nQuero sempre o seu calor\nNão importa seja como for\nFiz promessas de ti encontrar\nTemos tempo e podemos voltar\n\nEntão vamos juntos cantar o amor\nEntão vamos juntos cantar o amor\nCantar o amor (2x)\n\nSe a saudade pudesse esperar\nE o sentimento pudesse conter\nQue esta fase possa superar e\nSimplesmente possa amar você\n\nFlores lindas de uma estação\nSempre trazem muita emoção\nVou correndo pois quero chegar\nEm um lugar bonito pra te encontrar\n\nSe um dia você se lembrar\nDe um amor que pode acreditar\nNão prometa, mas venha me ver\nTudo o que eu quero é amar você.", "dur": 171.2, "audio": "audio/b_cantar.mp3", "covers": ["capas/b_cantar.jpg", "capas/b_cantar2.jpg"]}, {"title": "Metáfora", "author": "William Andrade", "credit": "Letra: William Andrade", "bonus": true, "lyrics": "O sol já se pôs\nNesta bela tarde de verão\nFolhas secas se espalham no chão\nCom a relva e o jasmim\nA noite vem, trazendo sua escuridão\nInduzindo a solidão\nEu não posso esperar\nJá é tarde\n\nE o vento anuncia a canção\nCom rumores de relâmpago e trovão\nE eu vejo a chuva cair\nSombras e luzes se confundem no\nManto do céu\nE o orvalho que paira na mente\nÉ bonito de se ver\n\nA brisa corre pelo verde\nQue corta o lago\nE na margem estão as pegadas\nE as marcas que ficou...", "dur": 204.7, "audio": "audio/b_metafora.mp3", "covers": ["capas/b_metafora.jpg", "capas/b_metafora2.jpg"]}, {"title": "Por Trás das Lentes", "author": "Waldi", "credit": "Letra: Waldi", "bonus": true, "lyrics": "Do alto eu vejo\nQualquer dia eu apareço\nNão sei mais sentir o que eu queria\nA culpa e o olhar de acusação\nOs fatos, as frases e a simulação\nÉ preciso jogar os sonhos fora\nEu só queria que você soubesse\nQue eu estou tão bem\n\nTudo passou\nEstou tão bem (2x)\n\nNão acredito mais em ilusão\nNão desisto de um perdão\nRelembrando o que eu vivi\nAgora só basta desistir\nTudo ficou para trás\nNão queria mais pensar\nNas noites em claro\nSentir só solidão desta louca paixão\nFoi tudo em vão\nAlguém que parte e não volta\nPalavras sem sentido\nSe vai sorrindo\nDe trás das lentes alguém mentindo\nFoi tudo o que restou do que se acabou\nDas marcas que ficou\nTudo passou...", "dur": 210.5, "audio": "audio/b_lentes.mp3", "covers": ["capas/b_lentes.jpg", "capas/b_lentes2.jpg"]}, {"title": "Amiga", "author": "William Andrade", "credit": "Letra: William Andrade", "bonus": true, "lyrics": "Você vem me procurar\nTenho tanto o que lembrar\nVocê não vai me deixar\nTenho tanto o que falar\nNão vou mais te aceitar\nNão vou mais te aceitar\n\nÀs vezes tudo é diferente\nQuando tento me aproximar\nA vida passa nos teus olhos\nOnde não quero voltar\n\nVocê tem tanto que mudar\nTenho tanto que mudar\nTudo parece tão distante\nNo teu jeito de pensar\nAs coisas mudam de lugar\nNão vou mais te ajudar\n\nEstou cansado do seu jogo\nEstou cansado de esperar\nVendo sempre o seu retorno\nProcure outro para brincar\nNão vou mais me magoar\nNão vou mais te aceitar.", "dur": 173.2, "audio": "audio/b_amiga.mp3", "covers": ["capas/b_amiga.jpg", "capas/b_amiga2.jpg", "capas/b_amiga3.jpg"]}, {"title": "Passado Imperfeito", "author": "William Andrade / Eduardo Domingos", "credit": "Letra: William Andrade / Eduardo Domingos", "bonus": true, "lyrics": "Você é incrível, mas não é pra mim\nPorque sou imperfeito\nE não mereço nada assim\nQuero apagar tudo o que escreveu\nE também o que prometeu\n\nSei que posso acreditar\nNo passado e no futuro\nMas não sei qual dos dois\nÉ mais injusto\n\nEu estou preso em seus olhos\nE me perco em seu nome\nMas não vou deixar\nTudo para trás\nNão quero mais pensar\nQue não posso ter você...", "dur": 161.7, "audio": "audio/b_passado.mp3", "covers": ["capas/b_passado.jpg", "capas/b_passado2.jpg"]}];
@@ -153,6 +248,45 @@ let i=0, shuffle=false, repeat=false;
 const fmt=s=>isFinite(s)?Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'):'0:00';
 const PLAY='<path d="M8 5v14l11-7z"/>', PAUSE='<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
 function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+const slugify=x=>x.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+{const seen={};T.forEach(t=>{let s=slugify(t.title);if(seen[s])s+='-bonus';let n=2,b=s;while(seen[s])s=b+'-'+(n++);seen[s]=1;t.slug=s})}
+let loadedOnce=false, SYNC={}, LOCALSYNC={}, lnEls=[], lnCur=-1;
+const MARCAR=new URLSearchParams(location.search).has('marcar');
+try{LOCALSYNC=JSON.parse(localStorage.getItem('climax-sync')||'{}')}catch(e){}
+const syncOf=t=>(MARCAR&&LOCALSYNC[t.slug])||SYNC[t.slug]||null;
+function renderLyrics(t){
+ const box=$('#lyrics'); lnCur=-1;
+ if(!t.lyrics){box.innerHTML='<span style="color:var(--mute)">Letra ainda não disponível.</span>';box.classList.remove('sync');$('#synctag').hidden=true;lnEls=[];renderMarca();return}
+ let n=0; box.innerHTML=t.lyrics.split('\n').map(l=>l.trim()?`<div class="ln" data-n="${n++}">${esc(l).replace(/\(2x\)/g,'<span class="rep">(2x)</span>')}</div>`:'<div class="gap"></div>').join('');
+ lnEls=[...box.querySelectorAll('.ln')];
+ const sy=syncOf(t), on=!!(sy&&sy.length);
+ box.classList.toggle('sync',on||MARCAR); $('#synctag').hidden=!on;
+ lnEls.forEach(el=>el.onclick=()=>{const s=syncOf(T[i]);const tt=s&&s[+el.dataset.n];if(tt!=null){a.currentTime=tt;if(a.paused)a.play()}});
+ renderMarca(); hiLine();
+}
+function hiLine(){
+ const sy=syncOf(T[i]); if(!sy||!lnEls.length)return;
+ let k=-1; for(let n=0;n<sy.length;n++){if(sy[n]!=null&&sy[n]<=a.currentTime+0.15)k=n}
+ if(k===lnCur)return; lnCur=k;
+ lnEls.forEach((el,n)=>{el.classList.toggle('on',n===k);el.classList.toggle('past',n<k)});
+ const el=lnEls[k], box=$('#lyrics');
+ if(el&&box.scrollHeight>box.clientHeight){box.scrollTo({top:el.offsetTop-box.offsetTop-box.clientHeight/3,behavior:'smooth'})}
+}
+a.addEventListener('timeupdate',hiLine); a.addEventListener('seeked',()=>{lnCur=-2;hiLine()});
+fetch('sincronia.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).then(j=>{SYNC=j||{};renderLyrics(T[i])}).catch(()=>{});
+/* modo de marcação: abra o site com ?marcar */
+function saveLocal(){try{localStorage.setItem('climax-sync',JSON.stringify(LOCALSYNC))}catch(e){}}
+function renderMarca(){
+ const m=$('#marca'); if(!MARCAR){m.classList.remove('on');return}
+ m.classList.add('on'); const t=T[i], arr=LOCALSYNC[t.slug]||[], tot=lnEls.length, feitas=arr.filter(x=>x!=null).length;
+ m.innerHTML=`<b>Modo marcação</b> — dê play e toque em <b>Marcar linha</b> (ou tecla Enter) no instante em que cada linha começa a ser cantada.<br>Marcadas nesta música: <b>${feitas} de ${tot}</b>`+
+ `<div class="bt"><button class="pri" id="mk">Marcar linha</button><button id="mku">Desfazer</button><button id="mkr">Recomeçar esta música</button><button id="mkd">Baixar arquivo (todas)</button></div>`;
+ $('#mk').onclick=marcar; $('#mku').onclick=()=>{arr.pop();LOCALSYNC[t.slug]=arr;saveLocal();renderLyrics(t)};
+ $('#mkr').onclick=()=>{delete LOCALSYNC[t.slug];saveLocal();a.currentTime=0;renderLyrics(t)};
+ $('#mkd').onclick=()=>{const all=Object.assign({},SYNC,LOCALSYNC);const b=new Blob([JSON.stringify(all,null,1)],{type:'application/json'});const l=document.createElement('a');l.href=URL.createObjectURL(b);l.download='sincronia.json';l.click()};
+}
+function marcar(){const t=T[i];const arr=LOCALSYNC[t.slug]||[];if(arr.length>=lnEls.length)return;arr.push(Math.round(a.currentTime*100)/100);LOCALSYNC[t.slug]=arr;saveLocal();renderMarca();lnCur=-2;hiLine();$('#synctag').hidden=false}
+if(MARCAR)document.addEventListener('keydown',e=>{if(e.key==='Enter'&&!/INPUT|TEXTAREA|BUTTON/.test(e.target.tagName)){e.preventDefault();marcar()}});
 function renderList(){
  const fb=T.findIndex(t=>t.bonus);
  $('#tracks').innerHTML=T.map((t,k)=>(k===fb?'<div class="sep">Bonus tracks</div>':'')+`<div class="tr${k===i?' cur':''}" data-k="${k}"><span class="n">${k+1}</span><img src="${t.covers[0]}" alt=""><div class="t"><b>${esc(t.title)}${t.bonus?'<span class="tag">BÔNUS</span>':''}</b><span>${esc(t.credit)}</span></div><span class="d">${fmt(t.dur)}</span></div>`).join('');
@@ -166,9 +300,10 @@ function load(k){
  i=(k+T.length)%T.length; const t=T[i];
  a.src=t.audio; startCovers(t);
  $('#title').innerHTML=esc(t.title)+(t.bonus?'<span class="tag">BÔNUS</span>':''); $('#credit').textContent=t.credit;
- $('#lyrics').innerHTML=t.lyrics?esc(t.lyrics).replace(/\(2x\)/g,'<span class="rep">(2x)</span>'):'<span style="color:var(--mute)">Letra ainda não disponível.</span>';
+ renderLyrics(t);
  $('#lyrics').scrollTop=0; document.title=t.title+' — Banda Clímax'; renderList();
- if('mediaSession' in navigator){navigator.mediaSession.metadata=new MediaMetadata({title:t.title,artist:'Banda Clímax',album:'Sem Limites',artwork:[{src:t.covers[0],sizes:'900x900',type:'image/jpeg'}]})}
+ if('mediaSession' in navigator){const abs=u=>new URL(u,location.href).href;navigator.mediaSession.metadata=new MediaMetadata({title:t.title,artist:'Banda Clímax',album:'Sem Limites'+(t.bonus?' (bonus track)':''),artwork:t.covers.map(c=>({src:abs(c),sizes:'900x900',type:'image/jpeg'}))})}
+ const u=new URL(location.href); if(k===0&&!u.searchParams.has('musica')&&!loadedOnce){} else {u.searchParams.set('musica',t.slug); history.replaceState(null,'',u)} loadedOnce=true;
 }
 function next(auto){ if(shuffle&&T.length>1){let r;do r=Math.floor(Math.random()*T.length);while(r===i);load(r)} else { if(auto&&i===T.length-1&&!repeat){load(0);return} load(i+1)} a.play() }
 $('#play').onclick=()=>a.paused?a.play():a.pause();
@@ -186,7 +321,15 @@ seek.onchange=()=>{a.currentTime=seek.value/1000*a.duration;drag=false};
 const vol=$('#vol'); const sv=()=>{a.volume=vol.value/100;vol.style.setProperty('--p',vol.value+'%')}; vol.oninput=sv; sv();
 $('#cover').onclick=()=>{$('#zoom img').src=T[i].covers[ci];$('#zoom').style.display='grid'}; $('#zoom').onclick=()=>$('#zoom').style.display='none';
 document.addEventListener('keydown',e=>{ if(e.target.tagName==='INPUT')return; if(e.code==='Space'){e.preventDefault();$('#play').click()} if(e.code==='ArrowRight')a.currentTime+=5; if(e.code==='ArrowLeft')a.currentTime-=5 });
-if('mediaSession' in navigator){const m=navigator.mediaSession;m.setActionHandler('play',()=>a.play());m.setActionHandler('pause',()=>a.pause());m.setActionHandler('nexttrack',()=>next(false));m.setActionHandler('previoustrack',()=>{load(i-1);a.play()})}
+if('mediaSession' in navigator){const m=navigator.mediaSession;m.setActionHandler('play',()=>a.play());m.setActionHandler('pause',()=>a.pause());m.setActionHandler('nexttrack',()=>next(false));m.setActionHandler('previoustrack',()=>{load(i-1);a.play()});
+ const tryH=(n,f)=>{try{m.setActionHandler(n,f)}catch(e){}};
+ tryH('seekbackward',d=>{a.currentTime=Math.max(0,a.currentTime-(d.seekOffset||10))});
+ tryH('seekforward',d=>{a.currentTime=Math.min(a.duration||0,a.currentTime+(d.seekOffset||10))});
+ tryH('seekto',d=>{if(d.fastSeek&&'fastSeek' in a)a.fastSeek(d.seekTime);else a.currentTime=d.seekTime});
+ tryH('stop',()=>{a.pause();a.currentTime=0});
+ const pos=()=>{try{if(a.duration&&isFinite(a.duration))m.setPositionState({duration:a.duration,playbackRate:a.playbackRate,position:Math.min(a.currentTime,a.duration)})}catch(e){}};
+ a.addEventListener('play',()=>{m.playbackState='playing';pos()});a.addEventListener('pause',()=>{m.playbackState='paused';pos()});
+ a.addEventListener('loadedmetadata',pos);a.addEventListener('seeked',pos);a.addEventListener('ratechange',pos)}
 const F = ["fotos/01.jpg", "fotos/02.jpg", "fotos/03.jpg", "fotos/04.jpg", "fotos/05.jpg", "fotos/06.jpg", "fotos/07.jpg", "fotos/08.jpg", "fotos/09.jpg", "fotos/10.jpg", "fotos/11.jpg", "fotos/12.jpg", "fotos/13.jpg", "fotos/14.jpg", "fotos/15.jpg", "fotos/16.jpg", "fotos/17.jpg", "fotos/18.jpg", "fotos/19.jpg"];
 let fi=0; const lb=$('#lb');
 $('#lb .th').innerHTML=F.map((f,k)=>`<img src="${f}" data-k="${k}" alt="Foto ${k+1}" loading="lazy">`).join('');
@@ -201,7 +344,7 @@ $('#lb .lp').onclick=e=>{e.stopPropagation();showF(fi-1)}; $('#lb .ln').onclick=
 $('#lb .lx').onclick=()=>lb.style.display='none'; lb.onclick=e=>{if(e.target===lb)lb.style.display='none'};
 let tx=0; lb.addEventListener('touchstart',e=>tx=e.touches[0].clientX); lb.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx; if(Math.abs(d)>50)showF(fi+(d<0?1:-1))});
 document.addEventListener('keydown',e=>{ if(lb.style.display!=='flex')return; e.stopImmediatePropagation(); if(e.key==='ArrowRight')showF(fi+1); if(e.key==='ArrowLeft')showF(fi-1); if(e.key==='Escape')lb.style.display='none' },true);
-load(0);
+{const q=new URLSearchParams(location.search).get('musica');const k=q?T.findIndex(t=>t.slug===q):-1;load(k>=0?k:0);if(k>=0)setTimeout(()=>document.getElementById('player').scrollIntoView({behavior:'smooth'}),300)}
 const L = [{"title": "Amiga", "author": "William Andrade", "lyrics": "Você vem me procurar\nTenho tanto o que lembrar\nVocê não vai me deixar\nTenho tanto o que falar\nNão vou mais te aceitar\nNão vou mais te aceitar\n\nÀs vezes tudo é diferente\nQuando tento me aproximar\nA vida passa nos teus olhos\nOnde não quero voltar\n\nVocê tem tanto que mudar\nTenho tanto que mudar\nTudo parece tão distante\nNo teu jeito de pensar\nAs coisas mudam de lugar\nNão vou mais te ajudar\n\nEstou cansado do seu jogo\nEstou cansado de esperar\nVendo sempre o seu retorno\nProcure outro para brincar\nNão vou mais me magoar\nNão vou mais te aceitar.", "tracks": [{"i": 19, "bonus": true}]}, {"title": "Anjos no Aquário", "author": "Eduardo Domingos", "lyrics": "Fui conversar com anjos no aquário\nE não tive resposta\nSerá que anjos não falam\nOu eu não consigo ouvir?\n\nPorque o mergulho que eles deram\nLogo voltou à superfície\nNão consigo enxergar e nem ouvir\nO que é que eles dizem?\n\nPorque anjos no aquário não passam\nDe peixes quando estou alucinado (2x)\n\nEu vou soltar os anjos do aquário\nE quebrar o vidro transparente\nE a água que sair do aquário\nVou lavar as minhas mãos\nE tentar fugir", "tracks": [{"i": 9, "bonus": true}]}, {"title": "Cantar o Amor", "author": "William Andrade", "lyrics": "Tem um jeito de me conquistar\nSua voz desperta a paixão\nNão faz sentido me magoar\nLhe entreguei meu coração\nQuero sempre o seu calor\nNão importa seja como for\nFiz promessas de ti encontrar\nTemos tempo e podemos voltar\n\nEntão vamos juntos cantar o amor\nEntão vamos juntos cantar o amor\nCantar o amor (2x)\n\nSe a saudade pudesse esperar\nE o sentimento pudesse conter\nQue esta fase possa superar e\nSimplesmente possa amar você\n\nFlores lindas de uma estação\nSempre trazem muita emoção\nVou correndo pois quero chegar\nEm um lugar bonito pra te encontrar\n\nSe um dia você se lembrar\nDe um amor que pode acreditar\nNão prometa, mas venha me ver\nTudo o que eu quero é amar você.", "tracks": [{"i": 16, "bonus": true}]}, {"title": "Carro do Ano", "author": "Denis Oliveira", "lyrics": "Primeiro poste que eu ver, eu vou bater\nPorque eu quero, eu quero\nÉ um carro do ano\nEu quero, eu quero\nÉ um carro do ano\nEu quero, eu quero\nÉ um carro do ano\n\nO ano passado você prometeu\nUm carro novo igualzinho ao seu\n\nEu quero, eu quero\nÉ um carro do ano\nEu quero, eu quero\nÉ um carro do ano\nEu quero, eu quero\nÉ um carro do ano\n\nNão adianta você chorar\nPorque esse carro eu não vou te dar\n\nEu quero, eu quero\nUm carro do ano\nÉ um carro do ano\nUm carro do ano\nÉ um carro do ano\nUm carro do ano\n\nUm carro novo você tem que me dar\nPra minhas minas passear\n\nEu quero, eu quero\nÉ um carro do ano\nEu quero, eu quero\nÉ um carro do ano\nEu quero, eu quero\nÉ um carro do ano", "tracks": [{"i": 6, "bonus": false}]}, {"title": "Contos de um Herói", "author": "William Andrade / Eduardo Domingos", "lyrics": "Vivo num tempo qualquer\nE o medo pra mim é real\nSinto coragem em ver\nO perigo que passa é fatal\n\nAs ruas não têm gratidão\nHá mortes causadas por pão\nPessoas que lutam sem ver\nProblemas que estão ao redor\n\nQue problemas são esses?\nNão sabemos dizer\nQue problemas são esses?\nNós queremos saber (2x)\n\nTento enxergar o porquê\nQue todos querem poder\nSer livre pra resolver\nOs problemas que a vida constrói\n\nIsso é um relato concreto\nContos de um Herói\nSomos todos modernos\nContos de um Herói.", "tracks": [{"i": 3, "bonus": false}]}, {"title": "Dentro de um Minuto", "author": "William Andrade", "lyrics": "Foi um minuto e nada mais\nUm simples instante que passou\nFoi um minuto e nada mais\nUma lembrança que ficou\n\nQuando te vi sem perceber\nDentro de mim algo mudou\nHavia tanto o que dizer\nMas o tempo não deixou\n\nVocê sorriu e disse adeus\nE aquele instante terminou\nSeus olhos brilharam pra mim\nE o momento se eternizou\n\nFoi um minuto e nada mais\nUm simples instante que passou\nFoi um minuto e nada mais\nUma lembrança que ficou...\n... dentro de mim...", "tracks": []}, {"title": "Depois de Tudo", "author": "William Andrade", "lyrics": "O mistério de se estar aqui\nÉ simplesmente o fato de viver\nNão, não tente me iludir\nAgora estou livre para perceber\n\nQuando se foi, não olhou para trás\nE não viu o que deixou\nNem mesmo um sinal de compaixão\nE mesmo assim, não foi real\nEnxergar toda razão que existe\nSem promessas e sem perdão\n\nO que houve não importa mais\nO futuro falará por nós (2x)\n\nFalará por nós e tudo findará\nE a distância que se marcou com o tempo\nNunca mais retornará\nCom tanta dor, que me fez chorar\nE lembrar o que passou\nÉ tudo\nE não quero mais recordar...", "tracks": [{"i": 12, "bonus": true}]}, {"title": "Foi Sem Querer", "author": "Denis Oliveira", "lyrics": "Foi sem querer que eu te encontrei\nFoi sem querer que me apaixonei\nFoi sem querer isso virou paixão\nNão posso entender\nNão é ilusão\nFoi sem querer\n\nSe você me desse uma chance\nPra eu te mostrar\nO que é um romance\nVocê ia ver\nQue isso é muito bom\nE ia entender o meu coração\nFoi sem querer.", "tracks": [{"i": 4, "bonus": false}, {"i": 11, "bonus": true}]}, {"title": "Metáfora", "author": "William Andrade", "lyrics": "O sol já se pôs\nNesta bela tarde de verão\nFolhas secas se espalham no chão\nCom a relva e o jasmim\nA noite vem, trazendo sua escuridão\nInduzindo a solidão\nEu não posso esperar\nJá é tarde\n\nE o vento anuncia a canção\nCom rumores de relâmpago e trovão\nE eu vejo a chuva cair\nSombras e luzes se confundem no\nManto do céu\nE o orvalho que paira na mente\nÉ bonito de se ver\n\nA brisa corre pelo verde\nQue corta o lago\nE na margem estão as pegadas\nE as marcas que ficou...", "tracks": [{"i": 17, "bonus": true}]}, {"title": "Muro de Rosas", "author": "William Andrade", "lyrics": "Atrás do muro de rosas\nEsconde as mais belas flores do jardim\nNo qual estão os meus segredos\nQuero saber se você vai me ajudar\nA resolver os problemas pendentes?\nNão posso simplesmente esquecer do passado\nE virar as costas para o mundo\n\nMuro de rosas vai desabar\nSe eu não puder me lembrar (2x)\n\nCastelos abandonados guardam\nOs seus mistérios\nPalavras não decifradas\nInvadem o meu império\nQuero saber se você vai me ajudar\nA fazer o que eu não fiz?\nQuero saber se você vai me ajudar\nA apagar a cicatriz...", "tracks": [{"i": 8, "bonus": true}]}, {"title": "Não Tenha Medo", "author": "William Andrade", "lyrics": "Não, não tenha medo, não\nVocê não está só\nEu sempre amei você\nEu sempre amei você\nNão tente me esquecer\nNão tente me esquecer\n\nSempre tive a ilusão\nQue a dor de uma paixão\nÉ fácil de curar\nMas tenho que lembrar\nQue tenho coração\nQue é frágil e sem razão\nNão posso aguentar\nFicar sem você\n\nFaça a rosa desabrochar\nFaça o pássaro voar\nFaça as luzes se acender\n\nNão, não tenha medo, não\nVocê não está só\nEu sempre amei você\nEu sempre amei você\n\nFaça a rosa desabrochar\nFaça o pássaro voar\nFaça as luzes se acender\n\nFaça a rosa desabrochar\nFaça o pássaro voar\nFaça as luzes se acender", "tracks": [{"i": 5, "bonus": false}]}, {"title": "O Nada", "author": "William Andrade / Eduardo Domingos", "lyrics": "O nada estava escrito, nada me disseram\nNada que fizeram adiantou pra mim\nEu vi o nada escrito num livro\nNão me lembro de que matéria era\nDe Inglês, Português ou Gramática\nMas não era de Matemática\n\nMas o nada das minhas canções\nEstão nos corações... e os corações\nQue recebem o nada\nNão querem nada com nada (2x)\n\nPara escrever esta canção não tive\nNada de inspiração\nMas o nada que todos conhecem\nJuro que nunca vi\n\nO nada é uma imperfeição\nDe nada quero saber então\nSei que tudo é um pesadelo\nOnde o nada está dentro\nO vento sempre me trouxe o nada\nE o pouco que me restou\nNão sei se posso entender\nO que o nada quis me dizer...", "tracks": [{"i": 10, "bonus": true}]}, {"title": "Paisagens ao Vento", "author": "Waldi / William Andrade / Denis Oliveira / Eduardo Domingos", "lyrics": "Paisagens ao vento vou te encontrar\nUm dia perfeito para relembrar\nMomentos passados e talvez esquecidos\nLembranças e glórias de um mundo perdido\n\nEstradas desertas de escuridão\nNão vejo ninguém, só solidão\nEstou sozinho e ninguém comigo\nProcuro um amigo\n\nOlhando o horizonte volto a perguntar\nMil passos estranhos, onde é que está\nDe tantas estrelas só enxergo o seu brilho\nÉ a luz do destino\nÉ você que eu quero perto de mim...", "tracks": [{"i": 2, "bonus": false}]}, {"title": "Paredes de Fogo", "author": "William Andrade", "lyrics": "Paredes de fogo estão a queimar\nTorpedos explodem no ar\nTanques de guerra, comando, invasão\nO sangue se espalha no chão\n\nHomens armados, sinto o perigo\nDesastre ao lado, não somos bandidos\nQuero respeito, procuro um abrigo\nMortes a balas e tiros perdidos\n\nTudo que eu quero é viver\nTudo que eu quero é viver\nMostre e se deixe envolver\nTudo o que eu quero é viver (2x)\n\nLaços traçados, corpos caídos\nCrimes, assaltos, tempos perdidos\nBrigas de asfalto e gente dormindo\nDrogas e facas e mortos sorrindo\n\nParedes de fogo estão a queimar\nAs flores não podem brotar\nPassos marcados de pura tensão\nVidas passadas em vão...", "tracks": [{"i": 1, "bonus": false}]}, {"title": "Passado Imperfeito", "author": "William Andrade / Eduardo Domingos", "lyrics": "Você é incrível, mas não é pra mim\nPorque sou imperfeito\nE não mereço nada assim\nQuero apagar tudo o que escreveu\nE também o que prometeu\n\nSei que posso acreditar\nNo passado e no futuro\nMas não sei qual dos dois\nÉ mais injusto\n\nEu estou preso em seus olhos\nE me perco em seu nome\nMas não vou deixar\nTudo para trás\nNão quero mais pensar\nQue não posso ter você...", "tracks": [{"i": 20, "bonus": true}]}, {"title": "Por Trás das Lentes", "author": "Waldi", "lyrics": "Do alto eu vejo\nQualquer dia eu apareço\nNão sei mais sentir o que eu queria\nA culpa e o olhar de acusação\nOs fatos, as frases e a simulação\nÉ preciso jogar os sonhos fora\nEu só queria que você soubesse\nQue eu estou tão bem\n\nTudo passou\nEstou tão bem (2x)\n\nNão acredito mais em ilusão\nNão desisto de um perdão\nRelembrando o que eu vivi\nAgora só basta desistir\nTudo ficou para trás\nNão queria mais pensar\nNas noites em claro\nSentir só solidão desta louca paixão\nFoi tudo em vão\nAlguém que parte e não volta\nPalavras sem sentido\nSe vai sorrindo\nDe trás das lentes alguém mentindo\nFoi tudo o que restou do que se acabou\nDas marcas que ficou\nTudo passou...", "tracks": [{"i": 18, "bonus": true}]}, {"title": "Segredo", "author": "William Andrade / Eduardo Domingos", "lyrics": "Pessoas escondem seus sentimentos\nTalvez por medo de enfrentar\nE encontrar o que há por dentro\nOu uma força pra nos guiar\n\nVamos ter que lutar\nE aprender a conduzir (2x)\n\nEncontro um perigo\nQue não deve ser real\nOu um segredo que está perdido\nNas lindas faces de um imortal\n\nEntre segredos que\nUma face esconde\nEu não consigo desvendar\nFaces alegres e\nFaces que choram\nUm sentimento a si buscar...", "tracks": [{"i": 15, "bonus": true}]}, {"title": "Sem Limites", "author": "William Andrade", "lyrics": "Vou no espaço, brilhe no céu\nAnde na chuva e seja fiel\nCorra perigos e se deixe sonhar\nUma estrela sei que pode alcançar\n\nSomos todos iguais e não temos limites\nSomos todos iguais e não temos limites\n\nNadar com os peixes não é ilusão\nBasta ter fé no seu coração\nQuando tudo está certo é só se lembrar\nQue tudo que faço é viver e sonhar\n\nSomos todos iguais e não temos limites\nSomos todos iguais e não temos limites\n\nEscale montanhas até se cansar\nVá para o oceano e mergulhe no mar\nNão me fale de erros nem me conte mentiras\nSerá que te vejo daqui a alguns dias\n\nSomos todos iguais e não temos limites\nSomos todos iguais e não temos limites", "tracks": [{"i": 0, "bonus": false}]}, {"title": "Sem Você", "author": "Denis Oliveira", "lyrics": "Sem você\nSem o seu amor\nSem o seu carinho\nEu vou ficar sozinho\n\nNão vou viver\nNão vou viver\nSem o seu amor\n\nSem você\nA vida é escuridão\nSem você\nPartiu meu coração\n\nNão vou viver\nNão vou viver\nSem o seu amor\n\nSem você\nNão há mais sentido\nSem você\nPara iluminar meu caminho\n\nNão vou viver\nNão vou viver\nSem o seu amor", "tracks": [{"i": 14, "bonus": true}]}, {"title": "Sentimento Perdido", "author": "Denis Oliveira", "lyrics": "Estou aqui, longe de ti\nLonge de tudo, fora de mim\nVou lutar, não vou desistir\nVou atrás de você, volta pra mim\n\nO passado está enterrado\nE o presente está ao meu lado\nO futuro vou cativar\nPara você voltar\nA confiar em mim\n\nMe perdoe, tudo o que fiz\nMagoei você\nPois eu não queria\nBrinquei com seus sentimentos\nCom seu coração\nCom você por dentro\nEstou arrependido...", "tracks": [{"i": 7, "bonus": true}]}, {"title": "7 de Dezembro", "author": "William Andrade", "lyrics": "Foi difícil entender\nQuando você me disse: — não\nE as vezes que eu sempre ouvia\nNa batida de um amor\nEu escutei meu coração\nE a voz que sempre me dizia\nCoisas que eu queria ouvir\nE me enchiam de ilusão\nEram mesmo as frases\nMais bonitas\n\nSei que agora foi em vão\nMe entregar a esta paixão\nQue por tantas vezes\nMe envolvia\nSempre me envolvia\nTudo é fantasia...", "tracks": [{"i": 13, "bonus": true}]}];
 let li=0; const lp=$('#letras');
 function showL(k){li=k;const s=L[k];
@@ -221,8 +364,57 @@ d.querySelectorAll('i').forEach(e=>e.onclick=()=>{go(+e.dataset.j);start()});
 $('#pslide').onclick=()=>{$('#zoom img').src=im[pi].src;$('#zoom').style.display='grid'};
 go(0);start()})();
 $('#lclose').onclick=()=>lp.classList.remove('open');
-document.querySelectorAll('nav a').forEach(el=>el.onclick=()=>{const g=el.dataset.go; if(g==='letras')openL(); else document.getElementById(g).scrollIntoView({behavior:'smooth'})});
+document.querySelectorAll('nav a').forEach(el=>el.onclick=()=>{const g=el.dataset.go; if(g==='letras')openL(); else if(g==='share')openShare(false); else document.getElementById(g).scrollIntoView({behavior:'smooth'})});
 document.addEventListener('keydown',e=>{ if(!lp.classList.contains('open'))return; e.stopImmediatePropagation(); if(e.key==='Escape')lp.classList.remove('open'); if(e.key==='ArrowDown'||e.key==='ArrowRight')showL(Math.min(li+1,L.length-1)); if(e.key==='ArrowUp'||e.key==='ArrowLeft')showL(Math.max(li-1,0)) },true);
+/* compartilhar */
+const shBox=$('#share');
+function openShare(track){
+ const base=location.origin+location.pathname, t=T[i];
+ const url=track?base+'?musica='+t.slug:base;
+ const txt=track?`Ouça "${t.title}" da Banda Clímax — álbum Sem Limites`:'Banda Clímax — álbum Sem Limites remasterizado. Ouça as músicas, leia as letras e veja as fotos!';
+ $('#shtitle').textContent=track?'Compartilhar música':'Compartilhar o site';
+ $('#shsub').textContent=track?t.title:'Banda Clímax — Sem Limites';
+ const e=encodeURIComponent;
+ $('#sh-wa').href='https://wa.me/?text='+e(txt+' '+url);
+ $('#sh-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(url);
+ $('#sh-x').href='https://twitter.com/intent/tweet?text='+e(txt)+'&url='+e(url);
+ $('#sh-tg').href='https://t.me/share/url?url='+e(url)+'&text='+e(txt);
+ $('#sh-cp').onclick=()=>{const ok=()=>$('#shok').textContent='Link copiado!';if(navigator.clipboard)navigator.clipboard.writeText(url).then(ok,()=>prompt('Copie o link:',url));else prompt('Copie o link:',url)};
+ const nat=$('#sh-nat'); nat.hidden=!navigator.share; nat.onclick=()=>navigator.share({title:'Banda Clímax',text:txt,url}).catch(()=>{});
+ $('#shok').textContent=''; shBox.classList.add('open');
+}
+$('#shtrack').onclick=()=>openShare(true);
+$('#shclose').onclick=()=>shBox.classList.remove('open');
+shBox.onclick=e=>{if(e.target===shBox)shBox.classList.remove('open')};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&shBox.classList.contains('open'))shBox.classList.remove('open')});
+
+/* mural de recados */
+(()=>{
+ const list=$('#mlist'), form=$('#mform'), st=$('#mstatus');
+ const ADMIN=new URLSearchParams(location.search).has('admin'); let senha='';
+ try{senha=sessionStorage.getItem('climax-mural')||''}catch(e){}
+ if(ADMIN){$('#madmin').classList.add('on');$('#msenha').value=senha;$('#mlogin').onclick=()=>{senha=$('#msenha').value;try{sessionStorage.setItem('climax-mural',senha)}catch(e){};carregar()}}
+ const dt=s=>{try{return new Date(s).toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'numeric'})}catch(e){return ''}};
+ const card=r=>`<div class="rc"><div class="hd"><b>${esc(r.nome)}</b><span class="meta">${r.cidade?esc(r.cidade)+' · ':''}${dt(r.data)}</span></div><p>${esc(r.msg)}</p>${ADMIN&&senha?`<button class="del" data-id="${esc(r.id)}">Apagar</button>`:''}</div>`;
+ let fechado=false;
+ function carregar(){
+  fetch('/api/recados',{cache:'no-store'}).then(async r=>{
+   if(r.status===503||r.status===404){fechado=true;list.innerHTML='<div class="vazio">O mural será aberto em breve.</div>';form.querySelector('button').disabled=true;return}
+   const j=await r.json(); const rs=j.recados||[];
+   list.innerHTML=rs.length?rs.map(card).join(''):'<div class="vazio">Nenhum recado ainda. Seja o primeiro!</div>';
+   list.querySelectorAll('.del').forEach(b=>b.onclick=()=>{if(!confirm('Apagar este recado?'))return;
+    fetch('/api/recados?id='+encodeURIComponent(b.dataset.id),{method:'DELETE',headers:{'x-mural-senha':senha}}).then(r=>r.json()).then(j=>{if(j.ok)carregar();else alert(j.erro||'Erro')})});
+  }).catch(()=>{list.innerHTML='<div class="vazio">Não foi possível carregar os recados agora.</div>'});
+ }
+ form.msg.addEventListener('input',()=>$('#mcount').textContent=form.msg.value.length);
+ form.onsubmit=e=>{e.preventDefault(); if(fechado)return;
+  const btn=form.querySelector('button'); btn.disabled=true; st.textContent='Enviando…';
+  fetch('/api/recados',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nome:form.nome.value,cidade:form.cidade.value,msg:form.msg.value,site:form.site.value})})
+  .then(async r=>{const j=await r.json().catch(()=>({}));if(r.ok){st.textContent='Recado enviado. Obrigado!';form.msg.value='';$('#mcount').textContent='0';carregar()}else st.textContent=j.erro||'Não foi possível enviar.'})
+  .catch(()=>st.textContent='Sem conexão. Tente de novo.').finally(()=>btn.disabled=false);
+ };
+ carregar();
+})();
 (function(){const y=new Date().getFullYear(),e=document.getElementById('ano');if(e)e.textContent=y>2026?'2026–'+y:'2026';
  const h=location.hostname; if(!h||h==='localhost'||h==='127.0.0.1') return;
  const v=document.getElementById('visitas'), im=v.querySelector('img');
