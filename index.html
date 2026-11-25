@@ -65,15 +65,14 @@ footer>div{margin:6px 0}footer .copy{line-height:1.6;margin-top:12px;opacity:.85
 #grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;padding:0 8px}
 #grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;cursor:zoom-in;filter:sepia(.15);transition:transform .2s,filter .2s}
 #grid img:hover{transform:scale(1.03);filter:none}
-#posteres{max-width:1180px;margin:16px auto 0;padding:0 16px}
-#posteres .card{padding:8px 8px 20px}
+#posteres{padding:8px 8px 18px}
 #posteres h2{font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--mute);padding:12px 12px 12px}
-#pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;padding:0 12px}
-#pgrid figure{margin:0}
-#pgrid img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;cursor:zoom-in;box-shadow:0 8px 30px rgba(0,0,0,.5);transition:transform .2s}
-#pgrid img:hover{transform:scale(1.02)}
-#pgrid figcaption{text-align:center;color:var(--mute);font-size:13px;margin-top:10px;display:flex;justify-content:center;gap:12px;align-items:center}
-#pgrid figcaption a{color:var(--acc);text-decoration:none;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+#pslide{position:relative;width:min(100%,280px);margin:0 auto;aspect-ratio:3/4;border-radius:10px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,.55);cursor:zoom-in}
+#pslide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+#pslide img.vis{opacity:1}
+#pdots{display:flex;justify-content:center;gap:8px;margin-top:12px}
+#pdots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer}#pdots i.on{background:var(--acc)}
+#left{display:flex;flex-direction:column;gap:24px;min-width:0}
 #lb{position:fixed;inset:0;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;z-index:10}
 #lb img{max-width:90vw;max-height:88vh;border-radius:6px;box-shadow:0 10px 40px #000}
 #lb button{position:absolute;color:#fff;width:52px;height:52px;background:rgba(255,255,255,.08)}
@@ -108,6 +107,7 @@ nav a:hover{border-color:var(--acc);color:var(--acc)}
 <div id="bg"></div>
 <header><h1>Banda Clímax</h1><p>Álbum · Sem Limites</p><nav><a data-go="player">Player</a><a data-go="letras">Letras</a><a data-go="fotos">Fotos</a><a data-go="posteres">Pôsteres</a></nav></header>
 <main>
+ <div id="left">
  <section id="player" class="card">
   <div id="cover"><img alt="Capa"><img alt="Capa"><div id="dots"></div></div>
   <div id="title"></div>
@@ -122,16 +122,14 @@ nav a:hover{border-color:var(--acc);color:var(--acc)}
   </div>
   <div class="vol"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4z"/></svg><input id="vol" type="range" min="0" max="100" value="90"></div>
  </section>
+<section id="posteres" class="card"><h2>Pôsteres</h2><div id="pslide" title="Ampliar"><img class="vis" src="posteres/poster_xerox.jpg" alt="Pôster Banda Clímax — Sem Limites (versão xerox)"><img src="posteres/poster_diy.jpg" alt="Pôster Banda Clímax — Sem Limites (versão DIY)" loading="lazy"></div><div id="pdots"></div></section>
+ </div>
  <div id="right">
   <section id="list" class="card"><h2>Faixas</h2><div id="tracks"></div></section>
   <section id="lyr" class="card"><h2>Letra</h2><div id="lyrics"></div></section>
  </div>
 </main>
 <section id="fotos"><div class="card"><h2>Fotos da banda</h2><div id="grid"></div></div></section>
-<section id="posteres"><div class="card"><h2>Pôsteres</h2><div id="pgrid">
-<figure><img src="posteres/poster_xerox.jpg" alt="Pôster Banda Clímax — Sem Limites (versão xerox)" loading="lazy"><figcaption>Sem Limites · Xerox <a href="posteres/poster_xerox.jpg" download>Baixar</a></figcaption></figure>
-<figure><img src="posteres/poster_diy.jpg" alt="Pôster Banda Clímax — Sem Limites (versão DIY)" loading="lazy"><figcaption>Sem Limites · DIY <a href="posteres/poster_diy.jpg" download>Baixar</a></figcaption></figure>
-</div></div></section>
 <footer>
 <div>Banda Clímax — gravações originais remasterizadas</div>
 <div id="visitas" hidden><img alt="contador de visitas" referrerpolicy="no-referrer-when-downgrade"></div>
@@ -203,7 +201,13 @@ function showL(k){li=k;const s=L[k];
  document.querySelectorAll('#ltxt .go').forEach(g=>g.onclick=()=>{lp.classList.remove('open');load(+g.dataset.t);a.play();window.scrollTo({top:0,behavior:'smooth'})});
  $('#ltxt').scrollTop=0}
 function openL(){lp.classList.add("open");const k=L.findIndex(x=>x.tracks.some(tr=>tr.i===i));showL(k>=0?k:0)}
-document.querySelectorAll('#pgrid img').forEach(el=>el.onclick=()=>{$('#zoom img').src=el.src;$('#zoom').style.display='grid'});
+(()=>{const im=[...document.querySelectorAll('#pslide img')];let pi=0,tm;const d=$('#pdots');
+d.innerHTML=im.map((_,j)=>`<i data-j="${j}"></i>`).join('');
+const go=j=>{pi=(j+im.length)%im.length;im.forEach((e,n)=>e.classList.toggle('vis',n===pi));d.querySelectorAll('i').forEach((e,n)=>e.classList.toggle('on',n===pi))};
+const start=()=>{clearInterval(tm);tm=setInterval(()=>go(pi+1),5000)};
+d.querySelectorAll('i').forEach(e=>e.onclick=()=>{go(+e.dataset.j);start()});
+$('#pslide').onclick=()=>{$('#zoom img').src=im[pi].src;$('#zoom').style.display='grid'};
+go(0);start()})();
 $('#lclose').onclick=()=>lp.classList.remove('open');
 document.querySelectorAll('nav a').forEach(el=>el.onclick=()=>{const g=el.dataset.go; if(g==='letras')openL(); else document.getElementById(g).scrollIntoView({behavior:'smooth'})});
 document.addEventListener('keydown',e=>{ if(!lp.classList.contains('open'))return; e.stopImmediatePropagation(); if(e.key==='Escape')lp.classList.remove('open'); if(e.key==='ArrowDown'||e.key==='ArrowRight')showL(Math.min(li+1,L.length-1)); if(e.key==='ArrowUp'||e.key==='ArrowLeft')showL(Math.max(li-1,0)) },true);
